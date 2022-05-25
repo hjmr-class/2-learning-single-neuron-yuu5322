@@ -83,19 +83,23 @@ function main(){
     init_w();
 
     for(let t = 0; t < teach_num; t++){
-    if(loop % 1000 == 0){
-        console.log(loop, func_error());
+        let y = forward(teach_x[t]);
+        console.log(t + ": y =" + y + "<--> y_hat =" + teach_y[t]);
     }
-    clear_dw()
-    calc_dw()
-    update_w()
+    for (loop = 0; loop < 100000; loop++) {
+        if(loop % 1000 == 0){
+            console.log(loop, func_error());
+        clear_dw()
+        calc_dw()
+        update_w()
+        }
     }
 
     console.log(loop, func_error())
 
     for(let t = 0; t < teach_num; t++){
     let y = forward(teach_x[t]);
-    console.log(t, y, teach_y[t]);
+    console.log(t +": " +  "y=" + y + "<---> y_hat =" + teach_y[t]);
     }
 }
 
