@@ -5,6 +5,7 @@ let alpha = 0.01;
 
 let w = [];
 let dw = [];
+let theta, d_theta
 
 let teach_x = [[0, 0], [0, 1], [1, 0], [1, 1]];
 let teach_y = [0, 1, 0, 1];
@@ -22,7 +23,7 @@ function forward(x){
     let i = 0;
     let u = 0;
     for (let i = 0; i < inp_num; i++){
-    u += w[i] * x[i];
+        u += w[i] * x[i];
     }
     u += theta;
     return sigmoid(u);
@@ -89,11 +90,11 @@ function main(){
     for (loop = 0; loop < 100000; loop++) {
         if(loop % 1000 == 0){
             console.log(loop, func_error());
+        }
         clear_dw()
         calc_dw()
         update_w()
         }
-    }
 
     console.log(loop, func_error())
 
